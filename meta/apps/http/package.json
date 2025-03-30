@@ -4,7 +4,7 @@
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-     "build": "tsc -b",
+    "build": "tsc -b",
     "start": "tsc -b && node dist/index.js"
   },
   "keywords": [],
@@ -13,8 +13,13 @@
   "type": "commonjs",
   "description": "",
   "dependencies": {
-    "@repo/db":"*",
+    "@repo/db": "*",
     "@types/express": "^5.0.1",
-    "express": "^4.21.2"
+    "@types/jsonwebtoken": "^9.0.9",
+    "bcrypt": "^5.1.1",
+    "bcryptjs": "^3.0.2",
+    "express": "^4.21.2",
+    "jsonwebtoken": "^9.0.2",
+    "zod": "^3.24.2"
   }
 }
