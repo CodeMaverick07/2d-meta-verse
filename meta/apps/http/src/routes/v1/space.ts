@@ -36,7 +36,7 @@ spaceRouter.post("/", userMiddleware, async (req, res) => {
       id: parsedData.data.mapId,
     },
     select: {
-      MapElements: true,
+      mapElements: true,
       width: true,
       height: true,
     },
@@ -47,7 +47,7 @@ spaceRouter.post("/", userMiddleware, async (req, res) => {
     return;
   }
   console.log("map.mapElements.length");
-  console.log(map.MapElements.length);
+  console.log(map.mapElements.length);
   let space = await client.$transaction(async () => {
     const space = await client.space.create({
       data: {
@@ -59,7 +59,7 @@ spaceRouter.post("/", userMiddleware, async (req, res) => {
     });
 
     await client.spaceElements.createMany({
-      data: map.MapElements.map((e) => ({
+      data: map.mapElements.map((e) => ({
         spaceId: space.id,
         elementId: e.elementId,
         x: e.x!,
