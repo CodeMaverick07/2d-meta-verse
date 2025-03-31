@@ -23,7 +23,8 @@ export const adminMiddleware =  (
     }
     req.userId = decoded.userId;
   } catch (error) {
-    res.status(401).json({ message: "Unauthorized" });
+    res.status(403).json({ message: "Unauthorized" });
+    return;
   }
   next();
 };

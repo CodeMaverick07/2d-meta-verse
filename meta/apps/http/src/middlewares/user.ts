@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../config";
 import { NextFunction, Request, Response } from "express";
-export const userMiddleware =  (
+export const userMiddleware = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -17,10 +17,11 @@ export const userMiddleware =  (
       userId: string;
       role: string;
     };
-    
+
     req.userId = decoded.userId;
   } catch (error) {
-    res.status(401).json({ message: "Unauthorized" });
+    res.status(403).json({ message: "Unauthorized" });
+    return;
   }
   next();
 };
