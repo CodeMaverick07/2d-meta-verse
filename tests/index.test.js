@@ -47,6 +47,7 @@ describe("Authentication", () => {
       password,
       type: "admin",
     });
+
     expect(response.status).toBe(200);
     const updatedResponse = await axios.post(`${BACKEND_URL}/api/v1/signup`, {
       username,
@@ -184,8 +185,6 @@ describe("User metadata endpoint", () => {
 
     expect(response.status).toBe(403);
   });
-
-  test("test 3", () => {});
 });
 
 describe("User avatar information", () => {
@@ -204,8 +203,6 @@ describe("User avatar information", () => {
     });
 
     userId = signupResponse.data.userId;
-
-    console.log("userid is " + userId);
     const response = await axios.post(`${BACKEND_URL}/api/v1/signin`, {
       username,
       password,
@@ -226,7 +223,6 @@ describe("User avatar information", () => {
         },
       }
     );
-
     avatarId = avatarResponse.data.avatarId;
   });
 

@@ -7,7 +7,7 @@ import {
   UpdateElementSchema,
 } from "../../types";
 import client from "@repo/db/client";
-import { adminMiddleware } from "../../middlewares/admin";
+import { adminMiddleware } from "../../middlewares/admin.middleware";
 export const adminRouter = Router();
 adminRouter.use(adminMiddleware);
 

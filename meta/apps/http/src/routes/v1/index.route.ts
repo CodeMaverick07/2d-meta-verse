@@ -1,7 +1,7 @@
 import { Router } from "express";
-import { userRouter } from "./user";
-import { spaceRouter } from "./space";
-import { adminRouter } from "./admin";
+import { userRouter } from "./user.route";
+import { spaceRouter } from "./space.route";
+import { adminRouter } from "./admin.route";
 import { SigninSchema, SignupSchema } from "../../types";
 import bcrypt from "bcryptjs";
 import client from "@repo/db/client";
@@ -12,11 +12,11 @@ import { JWT_SECRET } from "../../config";
 export const router = Router();
 
 router.post("/signup", async (req, res) => {
-  console.log("inside signup");
+
   // check the user
   const parsedData = SignupSchema.safeParse(req.body);
   if (!parsedData.success) {
-    console.log("parsed data incorrect");
+
     res.status(400).json({ message: "Validation failed" });
     return;
   }
@@ -35,8 +35,6 @@ router.post("/signup", async (req, res) => {
       userId: user.id,
     });
   } catch (e) {
-    console.log("erroer thrown");
-    console.log(e);
     res.status(400).json({ message: "User already exists" });
   }
 });

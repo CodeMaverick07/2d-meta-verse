@@ -1,7 +1,7 @@
 import jwt from "jsonwebtoken";
 import { JWT_SECRET } from "../config";
 import { NextFunction, Request, Response } from "express";
-export const adminMiddleware =  (
+export const userMiddleware = (
   req: Request,
   res: Response,
   next: NextFunction
@@ -9,7 +9,7 @@ export const adminMiddleware =  (
   const header = req.headers.authorization;
   const token = header?.split(" ")[1];
   if (!token) {
-    res.status(401).json({ message: "Unauthorized" });
+    res.status(403).json({ message: "Unauthorized" });
     return;
   }
   try {
@@ -17,10 +17,7 @@ export const adminMiddleware =  (
       userId: string;
       role: string;
     };
-    if (decoded.role !== "admin") {
-      res.status(403).json({ message: "Forbidden" });
-      return;
-    }
+
     req.userId = decoded.userId;
   } catch (error) {
     res.status(403).json({ message: "Unauthorized" });
