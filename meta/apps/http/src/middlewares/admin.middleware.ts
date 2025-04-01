@@ -8,7 +8,7 @@ export const adminMiddleware = (
 ) => {
   const header = req.headers.authorization;
   const token = header?.split(" ")[1];
-  console.log("token", token);
+
   if (!token) {
     res.status(403).json({ message: "Unauthorized" });
     return;
@@ -18,7 +18,6 @@ export const adminMiddleware = (
       userId: string;
       role: string;
     };
-    console.log(decoded);
     if (decoded.role !== "Admin") {
       res.status(403).json({ message: "Forbidden" });
       return;

@@ -141,8 +141,6 @@ describe("User metadata endpoint", () => {
         },
       }
     );
-    console.log("avatarresponse is " + avatarResponse.data.avatarId);
-
     avatarId = avatarResponse.data.avatarId;
   });
 
@@ -227,12 +225,9 @@ describe("User avatar information", () => {
   });
 
   test("Get back avatar information for a user", async () => {
-    console.log("asking for user with id " + userId);
     const response = await axios.get(
       `${BACKEND_URL}/api/v1/user/metadata/bulk?ids=[${userId}]`
     );
-    console.log("response was " + userId);
-    console.log(JSON.stringify(response.data));
     expect(response.data.avatars.length).toBe(1);
     expect(response.data.avatars[0].userId).toBe(userId);
   });
@@ -327,8 +322,6 @@ describe("Space information", () => {
     );
     element1Id = element1Response.data.id;
     element2Id = element2Response.data.id;
-    console.log(element2Id);
-    console.log(element1Id);
     const mapResponse = await axios.post(
       `${BACKEND_URL}/api/v1/admin/map`,
       {
@@ -359,9 +352,6 @@ describe("Space information", () => {
         },
       }
     );
-    console.log("mapResponse.status");
-    console.log(mapResponse.data.id);
-
     mapId = mapResponse.data.id;
   });
 
@@ -503,8 +493,6 @@ describe("Space information", () => {
         },
       }
     );
-    console.log("jhflksdjflksdfjlksdfj");
-    console.log(spaceCreateReponse.data);
     const response = await axios.get(`${BACKEND_URL}/api/v1/space/all`, {
       headers: {
         authorization: `Bearer ${adminToken}`,
@@ -647,7 +635,6 @@ describe("Arena endpoints", () => {
         },
       }
     );
-    console.log(spaceResponse.data);
     spaceId = spaceResponse.data.spaceId;
   });
 
@@ -666,7 +653,6 @@ describe("Arena endpoints", () => {
         authorization: `Bearer ${userToken}`,
       },
     });
-    console.log(response.data);
     expect(response.data.dimensions).toBe("100x200");
     expect(response.data.elements.length).toBe(3);
   });
@@ -677,8 +663,6 @@ describe("Arena endpoints", () => {
         authorization: `Bearer ${userToken}`,
       },
     });
-
-    console.log(response.data.elements[0].id);
     let res = await axios.delete(`${BACKEND_URL}/api/v1/space/element`, {
       data: { id: response.data.elements[0].id },
       headers: {
