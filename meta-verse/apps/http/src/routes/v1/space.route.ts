@@ -54,7 +54,7 @@ spaceRouter.post("/", userMiddleware, async (req, res) => {
     });
 
     await client.spaceElements.createMany({
-      data: map.mapElements.map((e) => ({
+      data: map.mapElements.map((e:any) => ({
         spaceId: space.id,
         elementId: e.elementId,
         x: e.x!,
@@ -131,7 +131,7 @@ spaceRouter.get("/all", userMiddleware, async (req, res) => {
   });
 
   res.json({
-    spaces: spaces.map((s) => ({
+    spaces: spaces.map((s:any) => ({
       id: s.id,
       name: s.name,
       thumbnail: s.thumbnail,
@@ -204,7 +204,7 @@ spaceRouter.get("/:spaceId", async (req, res) => {
 
   res.json({
     dimensions: `${space.width}x${space.height}`,
-    elements: space.elements.map((e) => ({
+    elements: space.elements.map((e:any) => ({
       id: e.id,
       element: {
         id: e.element.id,

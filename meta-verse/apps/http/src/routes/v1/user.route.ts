@@ -61,7 +61,7 @@ userRouter.get("/metadata/bulk", async (req, res) => {
     });
     res
       .json({
-        avatars: metadata.map((m) => ({ userId: m.id, avatarId: m.avatarId })),
+        avatars: metadata.map((m:any) => ({ userId: m.id, avatarId: m.avatarId })),
       })
       .status(200);
   } catch (error) {

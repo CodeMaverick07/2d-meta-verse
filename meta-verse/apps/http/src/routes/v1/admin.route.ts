@@ -77,7 +77,7 @@ adminRouter.post("/map", async (req, res) => {
       height: parseInt(parsedData.data.dimensions.split("x")[1]),
       thumbnail: parsedData.data.thumbnail,
       mapElements: {
-        create: parsedData.data.defaultElements.map((e:any) => ({
+        create: parsedData.data.defaultElements.map((e) => ({
           elementId: e.elementId,
           x: e.x,
           y: e.y,
